@@ -1,10 +1,8 @@
-# Web Password Generator
+# Guessing Game 
 
 ## Description
 
-This web application generates secure passwords based on user-defined criteria. It allows users to customize the length of the password and select the character types to include, such as lowercase letters, uppercase letters, numbers, and special characters. This was a homework challenge during bootcamp at UCB Ext. [Link to Deployed page](https://meanbean87.github.io/web-password-generator/).
 
-![Site Landing Page](./assets/images/web-password-generator.png)
 
 ## Technology Used
 
@@ -17,26 +15,12 @@ This web application generates secure passwords based on user-defined criteria. 
 
 ## JavaScript Example
 
-```JavaScript
-  //For loop to generate the password.
-  for (let i = 0; i < passwordLength; i++) {
-    randomString += selectedCharacters.charAt(
-      Math.floor(Math.random() * selectedCharacters.length)
-```
 
 ## Learning Points
 
-Use of event handlers and JavaScript to create dynamically rendered content. And the datatypes returned by using event handlers in JavaScript.
+
 
 ## Usage
-
-To use the Web Password Generator:
-
-1. Visit the deployed site [here](https://meanbean87.github.io/web-password-generator/).
-2. Click on the "Generate Password" button.
-3. A prompt will appear asking for the desired length of the password. Enter a number between 8 and 128.
-4. You will then be prompted to include lowercase letters, uppercase letters, numbers, and special characters in the password. Click "OK" for yes or "Cancel" for no.
-5. After confirming the character types, the generated password will be displayed in the text box.
 
 ## Author Info
 
