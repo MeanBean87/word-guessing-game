@@ -15,17 +15,31 @@
 
 <body>
     <header>
-        <button>Start</button>
+        <button id="start-button">Start</button>
     </header>
     <main>
         <div id="word-container" class="container">
             <h1 id="word"></h1>
         </div>
         <div id="timer" class="container">
-
+            <h1 id="time"></h1>
+        </div>
+        <div class="container">
+            <h1 id="wrong"></h1>
         </div>
         <div id="letters-used" class="container">
-
+            <h1 id="letters"></h1>
+        </div>
+        <div id="guesses-left" class="container">
+            <h1 id="guesses"></h1>
+        </div>
+        <div id="guess-input" class="container">
+            <input type="text" id="guess" placeholder="Guess a letter">
+            <button id="guess-button">Guess</button>
+        </div>
+        <div id="game-over" class="container">
+            <h1 id="game-over-text"></h1>
+            <button id="restart-button">Restart</button>
         </div>
     </main>
     <script src="script.js" async defer></script>

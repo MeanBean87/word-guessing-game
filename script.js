@@ -54,7 +54,19 @@ const randomWords = [
 let chosenWord = "";
 let hiddenWord = "";
 let maxGuesses = 6;
-let lettersGuessed = [];
+let guessedLetters = [];
+let remainingGuesses = maxGuesses;
+let totalWins = 0;
+let totalLosses = 0;
+let timerInterval;
+
+const text = document.getElementById("word");
+const wrong= document.getElementById("wrong");
+const letters = document.getElementById("letters");
+const startButton = document.getElementById("start-button");
+const guessButton = document.getElementById("guess-button");
+const guessInput = document.getElementById("guess");
+const gameOverText = document.getElementById("game-over-text");
 
 const selectRandomWord = () => {
   const randomIndex = Math.floor(Math.random() * randomWords.length);
@@ -74,10 +86,20 @@ const updateHiddenWord = (letter) => {
       isCorrectGuess = true;
     }
   }
+  text.textContent = hiddenWord.join(" ");
   return isCorrectGuess;
 };
 
-const processGuess = (letter) => {
+const checkWin = () => {
+  return hiddenWord.join("") === chosenWord;
+};
+
+const guessedLetter = (letter) => {
+  return guessedLetters.includes(letter);
+};
+
+const processGuess = () => {
+  const letter = guessInput.value;
   if (guessedLetter(letter)) {
     return;
   }
@@ -87,20 +109,25 @@ const processGuess = (letter) => {
   const isCorrectGuess = updateHiddenWord(letter);
 
   if (isCorrectGuess) {
-    console.log("Correct Guess!");
     if (checkWin()) {
-      console.log("You win!");
-    } else {
-      console.log(`Word: ${hiddenWord.join(" ")}`);
+      text.textContent = "You win!";
+      totalWins++;
+      gameOverText.textContent = `Total Wins: ${totalWins}, Total Losses: ${totalLosses}`;
+      clearInterval(timerInterval);
     }
   } else {
     remainingGuesses--;
-    console.log(`Incorrect Guess! You have ${remainingGuesses} guesses left.`);
+    wrong.textContent = `Incorrect Guess! You have ${remainingGuesses} guesses left.`;
 
     if (remainingGuesses === 0) {
-      console.log("You lose!");
+      text.textContent = "You lose!";
+      totalLosses++;
+      gameOverText.textContent = `Total Wins: ${totalWins}, Total Losses: ${totalLosses}`;
+      clearInterval(timerInterval);
     }
   }
+  letters.textContent = `Letters Guessed: ${guessedLetters.join(", ")}`;
+  guessInput.value = "";
 };
 
 const startGame = () => {
@@ -108,4 +135,20 @@ const startGame = () => {
   initializeHiddenWord();
   remainingGuesses = maxGuesses;
   guessedLetters = [];
+  text.textContent = hiddenWord.join(" ");
+  letters.textContent = "Letters Guessed:";
+  gameOverText.textContent = "";
+  guessInput.value = "";
+  document.getElementById("time").textContent = "0";
+
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    const timeElement = document.getElementById("time");
+    let time = parseInt(timeElement.textContent);
+    time++;
+    timeElement.textContent = time.toString();
+  }, 1000);
 };
+
+startButton.addEventListener("click", startGame);
+guessButton.addEventListener("click", processGuess);
