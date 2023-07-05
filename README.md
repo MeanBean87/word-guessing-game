@@ -29,10 +29,9 @@ Michael Mattingly
 - GitHub: [meanbean87](https://github.com/meanbean87)
 - LinkedIn: [Michael Mattingly](https://www.linkedin.com/in/michael-mattingly-5580b1280/)
 
-## Credits
+Anthony Nguyen
 
-- The Web Password Generator was created by [meanbean87](https://github.com/meanbean87), with source code provided from UC Berkeley Extension.
-- Favicon owned by Michael Mattingly.
+- Github: [hyunghung](https://github.com/hyunghung)
 
 ## License
 
